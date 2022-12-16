@@ -1,13 +1,34 @@
 {
-    "type": "setup",
     "alias": "templates",
-    "entrypoint": "./src/start.sh",
-    "termination": "./src/stop.sh",
-    "variables": [
+    "components": [
         {
-            "name": "myVar",
-            "type": "string",
-            "description": "some basic description"
+            "type": "setup",
+            "files": [
+                {
+                    "src": "src/sdk",
+                    "dst": ".github",
+                    "condition": "'${{ repoType }}' === 'sdk'"
+                },
+                {
+                    "src": "src/template",
+                    "dst": ".github/",
+                    "condition": "'${{ repoType }}' === 'template'"
+                }
+            ],
+            "variables": [
+                {
+                    "name": "githubRepoId",
+                    "type": "string",
+                    "required": true,
+                    "description": "The id of the repository, e.g. myOrg/myRepo."
+                },
+                {
+                    "name": "repoType",
+                    "type": "string",
+                    "required": true,
+                    "description": "The type of the repository: 'template' or 'sdk'"
+                }
+            ]
         }
     ]
 }
