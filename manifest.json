@@ -1,18 +1,12 @@
 {
-    "alias": "templates",
     "components": [
         {
+            "name": "templates",
             "type": "setup",
             "files": [
                 {
-                    "src": "src/sdk",
-                    "dst": ".github",
-                    "condition": "'${{ repoType }}' === 'sdk'"
-                },
-                {
-                    "src": "src/template",
-                    "dst": ".github/",
-                    "condition": "'${{ repoType }}' === 'template'"
+                    "src": "src/${{ repoType }}",
+                    "dst": ".github"
                 }
             ],
             "variables": [
@@ -26,7 +20,7 @@
                     "name": "repoType",
                     "type": "string",
                     "required": true,
-                    "description": "The type of the repository: 'template' or 'sdk'"
+                    "description": "The type of the repository: 'app' or 'sdk'"
                 }
             ]
         }
