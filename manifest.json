@@ -1,7 +1,7 @@
 {
     "components": [
         {
-            "name": "templates",
+            "id": "github-templates",
             "type": "setup",
             "files": [
                 {
